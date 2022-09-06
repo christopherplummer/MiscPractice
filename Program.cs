@@ -6,8 +6,7 @@ linkedList.Add("So");
 linkedList.Add("Okay");
 linkedList.Add("Thanks");
 
-DateTime date = DateTime.Now;
-int hourRemainder = date.Hour % 6;
+int hourRemainder = DateTime.Now.Hour % 6;
     
 var target = linkedList.FindNodeByPosition(hourRemainder);
 Console.WriteLine($"Target Data: {target.Data}");
