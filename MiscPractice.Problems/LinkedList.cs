@@ -11,7 +11,23 @@ public class LinkedList<T>
         return tail.Position + 1;
     }
 
-    public void Add(T item) 
+    public void InsertAtBeginning(T item) 
+    {
+        if (Head is null) 
+        {
+            Head = new Node<T> {Position = 0, Data = item};
+            return;
+        }
+
+        var temp = new Node<T> {Position = 0, Data = item};
+        temp.Next = Head;
+        temp.Next.Position++;
+        Head = temp;
+        IncrementPositions(Head.Next.Next);
+        return;
+    }
+
+    public void InsertAtEnd(T item) 
     {
         if (Head is null) 
         {
@@ -25,6 +41,11 @@ public class LinkedList<T>
         }
         var tail = FindTail(Head.Next);
         tail.Next = new Node<T> { Position = tail.Position + 1, Data = item };
+    }
+
+    public bool Remove(T item) 
+    {
+        return false;
     }
 
     public Node<T> FindNodeByPosition(int position)
@@ -48,10 +69,19 @@ public class LinkedList<T>
         return targetNode;
     }
 
+#region Private Methods
     private Node<T> FindTail(Node<T> node)
     {
         return node.Next is null ? node : FindTail(node.Next);
     }
+
+    private void IncrementPositions(Node<T> node)
+    {
+        if (node is null) return;
+        node.Position++;
+        IncrementPositions(node.Next);
+    }
+#endregion
 }
 
 public class Node<T>
