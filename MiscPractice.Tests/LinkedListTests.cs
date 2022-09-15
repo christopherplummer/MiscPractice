@@ -8,8 +8,6 @@ public class LinkedListTests
     {
         var linkedList = new Problems.LinkedList<string>();
 
-        Assert.AreEqual(0, linkedList.Count());
-
         linkedList.InsertAtBeginning("test");
         linkedList.InsertAtBeginning("nice");
         linkedList.InsertAtBeginning("okay");
@@ -25,16 +23,15 @@ public class LinkedListTests
     {
         var linkedList = new Problems.LinkedList<string>();
 
-        Assert.AreEqual(0, linkedList.Count());
-
         linkedList.InsertAtEnd("test");
         linkedList.InsertAtEnd("nice");
         linkedList.InsertAtEnd("okay");
         linkedList.InsertAtEnd("sweet");
         linkedList.InsertAtEnd("yes");
 
-        Assert.AreEqual(5, linkedList.Count());
-        Assert.AreEqual("yes", linkedList.FindNodeByPosition(linkedList.Count() - 1).Data);
+        var count = linkedList.Count();
+        Assert.AreEqual(5, count);
+        Assert.AreEqual("yes", linkedList.FindNodeByPosition(count - 1).Data);
     }
 
     [TestMethod]
