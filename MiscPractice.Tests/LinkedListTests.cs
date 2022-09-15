@@ -34,6 +34,7 @@ public class LinkedListTests
         linkedList.InsertAtEnd("yes");
 
         Assert.AreEqual(5, linkedList.Count());
+        Assert.AreEqual("yes", linkedList.FindNodeByPosition(linkedList.Count() - 1).Data);
     }
 
     [TestMethod]
